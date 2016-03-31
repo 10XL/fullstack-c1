@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>Module 2 Solution Part 1</title>
+</head>
+    <body onload="gameLoop()">
+        <script>
+        var finished = false;
+        var user_input_text;
+        var user_input;
+        var target_color;
+        var guesses = 0;
+        var colors = ["blue", "cyan", "gold", "gray", "magenta",
+        				"orange", "red", "white", "yellow"];
+
+
+        function gameLoop() {
+        	//var random_color = colors[Math.floor(Math.random() * colors.length)];
+        	var random_number = 2;
+        	target_color = colors[random_number];
+        	while (!finished) {
+        		alert("Debug hint: \n The answer is " + target_color)
+        		user_input_text = prompt("I am thinking of one of these colors:\n\n" + colors.toString() + "\n\n What color am I thinking of? \n\n Hint:" + target_color);
+        		guesses += 1;
+        		//if (user_input_text == target_color) {
+        		//	finished = true;
+        		//}
+        		finished = checkGuess();
+        	}
+        }
+
+        function checkGuess() {
+        	if (colors.indexOf(user_input_text) > -1) {
+        		if (user_input_text == target_color) {
+        			myBody=document.getElementsByTagName("body")[0];
+        			myBody.style.background = target_color;
+        			alert("Congratulations! You have guessed the color! \n\n It took you " + guesses + " guesses to finish the game! \n\n You can see the color in the background.");
+        			return true;
+        		}
+        		else {
+        			var value;
+        			if (target_color > user_input_text) {
+        				value = "higher";
+        			}
+        			else {
+        				value = "lower";
+        			}
+        			alert("Sorry, your guess is not correct!\n\n Hint: your color is alphabetically " + value + " than mine. \n\n Please try again.")
+        			return false;
+        		}
+        	}
+        	else {
+        		alert("Sorry, I don't recognize your color. \n\n Please try again.")
+        		return false;
+        	}
+
+        } 
+        </script>
+    </body>
+</html>

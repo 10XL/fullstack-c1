@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Module 2 Solution Part 1</title>
+</head>
+    <body onload="gameLoop()">
+        <script>
+        var finished = false;
+        var user_input_text;
+        var user_input;
+        var target_color;
+        var guesses = 0;
+        var colors = ["blue", "cyan", "gold", "gray", "magenta",
+        				"orange", "red", "white", "yellow"];
+
+
+        function gameLoop() {
+        	var random_number = Math.floor(Math.random() * colors.length);
+        	target_color = colors[random_number];
+            alert("Debug hint: \n The answer is " + target_color)
+        	while (!finished) {
+        		user_input_text = prompt("I am thinking of one of these colors:\n\n" + colors.toString() + "\n\n What color am I thinking of? \n\n Hint:" + target_color);
+        		guesses += 1;
+        		if (user_input_text == target_color) {
+        			finished = true;
+        		}
+        	}
+        } 
+        </script>
+    </body>
+</html>

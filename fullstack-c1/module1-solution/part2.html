@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module 1 Solution - Part 1</title>
+	<style>
+
+	fieldset{
+		background-color: lightyellow;
+		border: solid yellow 10px;
+		margin-bottom: 10px;
+		width: 720px;
+	}
+
+	span{
+		padding: 4px;
+		text-align: center;
+		box-sizing: border-box;
+		display: inline-block;
+		width: 50px;
+	}
+
+	.lower{
+		background-color: darkred;
+	}
+
+	.upper{
+		background-color: purple;
+	}
+
+	label{
+		width: 180px;
+		display: inline-block;
+		text-align: right;
+		vertical-align: top;
+	}
+
+	label #male, label#female {
+		width: auto;
+	}
+
+	 textarea {
+        width: 360px;
+        height: 50px;
+      }
+
+	</style>
+</head>
+<body>
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+
+	<fieldset>
+		<legend>Your Face</legend>
+		<label for="avatar">Your Image:</label>
+		<input type="file" id="avatar" name="avatar" required> <br>
+		<label for="preview">Image Preview:</label>
+		<img id="preview" src=""> <br>
+	</fieldset> <br>
+
+
+	<fieldset>
+		<legend>Your General Details</legend>
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required> <br>
+		<label for="gender">Gender:</label>
+			<input type="radio" name="gender" value="male" required >
+			Male
+			<input type="radio" name="gender" value="female" required>
+			Female
+			<br>
+		<label for="age">Age:</label>
+		<input type="number" id="age" name="age" required> <br>
+		<label for="dob">Date of Birth:</label>
+		<input type="date" id="dob" name="dob"> <br>
+		<label for="color">Favorite color:</label>
+		<input type="color" id="color" name="color"> <br>
+		<label for="country">Which Country:</label>
+				<select id="country">
+					<option>No selection</option>
+					<option>Canada</option>
+					<option>China</option>
+					<option>Russia</option>
+					<option>United Kingdom</option>
+					<option>United Sates</option>
+				</select>
+	</fieldset> <br>
+
+
+	<fieldset>
+		<legend>Your Indicators</legend>
+		<label for="height">Height:</label> 
+		<span class="lower">Short</span>
+		<input type="range" min="0" max="100" id="height" name="height"> 
+		<span class=" lower">Tall</span>
+		<br>
+		<label for="salary">Salary:</label> 
+		<span class="upper">Poor</span>
+		<input type="range" min="0" max="100" id="salary" name="salary">
+		<span class="upper">Rich</span>
+		<br>
+	</fieldset> <br>
+
+
+	<fieldset>
+		<legend>Your Contact Information</legend>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required> <br>
+		<label  for="tel">Mobile:</label>
+		<input type="tel" id="tel" name="tel"> <br>
+		<label for="address">Address</label>
+		<textarea id="address"></textarea><br>
+		<label for="contact">Method to contact you:</label>
+		<input type="checkbox" name"contact">Email</input>
+		<input type="checkbox" name"contact">Whatsapp</input>
+		<input type="checkbox" name"contact">In-app chat</input>
+	</fieldset>
+
+	<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
