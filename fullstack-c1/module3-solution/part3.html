@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Module 3 Solution Part 1</title>
+	<title>Module 3 Solution Part 3</title>
 
 	<style>
 
@@ -39,7 +39,8 @@
 		function generateFaces() {
 			for (var i = 0; i < numberOfFaces; i++) {
 				theImg = document.createElement('img');
-				theImg.src = "smile.png";
+				//theImg.src = "smile.png";
+				theImg.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
 				theImg.style.top = getRandomArbitrary(0,400) + "px";
 				theImg.style.left = getRandomArbitrary(0, 400) + "px";
 				theLeftSide.appendChild(theImg);
