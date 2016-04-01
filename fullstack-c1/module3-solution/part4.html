@@ -55,6 +55,13 @@
 
 			theLeftSide.lastChild.onclick = 
 				function nextLevel(event) {
+					while (theLeftSide.firstChild) {
+					theLeftSide.removeChild(theLeftSide.firstChild);
+					}
+					while (theRightSide.firstChild){
+						theRightSide.removeChild(theRightSide.firstChild);
+					}
+                    
 					event.stopPropagation();
 					numberOfFaces += 5;
 					generateFaces();
@@ -70,9 +77,17 @@
 
 		}
 
+
+
 		function getRandomArbitrary(min, max) {
   			return Math.random() * (max - min) + min;
 		}
+
+		// function delete_all_children() {
+		// 	//var theNode = document.getElementById("theBody"); 
+		// 	while (the.firstChild) 
+		// 		theNode.removeChild(theNode.firstChild);
+		// }
 
 	</script>
 
