@@ -1,2 +1,2 @@
-# fullstack-c1
-fullstack-c1 solutions
+# fullstack-solutions
+solutions for fullstack courses
