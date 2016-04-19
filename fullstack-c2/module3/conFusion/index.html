@@ -63,22 +63,49 @@
                     <li><a href="contactus.html"> <i class="fa fa-envelope-o"></i> Contact</a></li>
                     </ul>
 
-                    <form class="navbar-form navbar-right" role="search"> <!-- Navbar sign in form -->
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                          <input type="text" class="form-control" name="password" placeholder="Password"></input>
-                      </div>
-                      <div class="form-group">
-                          <input type="checkbox" name="remember-me" id="remember-me" value="1"><a style="color:floralwhite">Remember Me</a></input>
-                      </div>
-                      <button type="submit" class="btn btn-info">Sign In</button>
-                    </form> <!-- End navbar sign in form -->
+                 <ul class="nav navbar-nav navbar-right">
+                    <li><a data-toggle="modal" data-target="#loginModal">
+                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                </ul>
+
 
                 </div> <!-- navbar end -->
             </div>
-        </nav>  
+        </nav>
+
+    <div id="loginModal" class="modal fade" role="dialog"> <!-- Login modal -->
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login </h4>
+            </div>
+            <div class="modal-body">
+
+                    <form class="form-inline" > <!-- Navbar sign in form -->
+                      <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input type="email" id="email" class="form-control input-sm" name="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label class="sr-only" for="password">Password</label>
+                          <input type="password" id="password" class="form-control input-sm" name="password" placeholder="Password"></input>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                            <input type="checkbox">Remember me
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-info btn-sm">Sign In</button><button type="button" class="btn btn-default btn-sm"
+                       data-dismiss="modal">Cancel</button>
+                    </form> <!-- End navbar sign in form -->
+
+            </div>
+        </div>
+        </div>
+    </div> <!-- End login modal -->
 
 
     <header class="jumbotron">
