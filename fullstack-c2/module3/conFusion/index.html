@@ -98,7 +98,7 @@
                 </div> <!-- End restaurant logo -->
                 <div class="col-xs-12 col-sm-2"> <!-- Reserve table button -->
                     <p style="padding: 40px"></p>
-                    <a type="button" class="btn btn-warning btn-block" href="#reservetable">Reserve Table</a>
+                    <a type="button" class="btn btn-warning btn-block" data-toggle="tooltip" title="Or Call us at +852 12345678" data-placement="bottom" href="#reserveform">Reserve Table</a>
                 </div> <!-- End reserve table button -->
             </div>
         </div>
@@ -191,7 +191,7 @@
               <h3>Reserve a Table</h3> 
            </div>
             <div class="col-xs-12 col-sm-9"> <!--Form div -->
-                <form id="reservetable" class="form-horizontal" role="form">
+                <form id="reserveform" class="form-horizontal" role="form">
 
                     <div class="form-group"> <!-- Checkbox -->
                         <div class="col-xs-12 col-sm-2 control-label"> 
@@ -302,6 +302,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+         });
+    </script>
 
 </body>
 
