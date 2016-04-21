@@ -285,7 +285,7 @@
                         <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                     </button>
                 </div>
-                
+
             </div>
             </div>
        </div> <!-- End carousel -->
@@ -420,7 +420,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-
+    
+    <!--! Activate carousel control buttons -->
+    <script>
+        $(document).ready(function(){
+            $("#mycarousel").carousel( { interval: 2000 } );
+                          $("#carousel-pause").click(function(){
+                $("#mycarousel").carousel('pause');
+            });
+                        $("#carousel-play").click(function(){
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+    </script>
 </body>
 
 </html>
