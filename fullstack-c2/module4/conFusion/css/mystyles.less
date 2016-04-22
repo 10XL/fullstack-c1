@@ -1,3 +1,4 @@
+
 @white: #ffffff;
 @off-white: #eeeeee;
 @lt-gray: #dddddd;
@@ -7,3 +8,27 @@
 
 // Height variables
 @carousel-height: 300px;
+
+.zero-margin (@pad-up-dn: 0px, @pad-left-right: 0px) {
+	margin:0px auto;
+	padding: @pad-up-dn @pad-left-right;
+}
+
+.row-header {
+	.zero-margin();
+}
+.row-content {
+	.zero-margin (50px, 0px);
+	border-bottom: 1px ridge;
+	min-height:400px;
+}
+.row-footer {
+	.zero-margin(20px, 0px);
+	background-color: #AfAfAf;
+}
+.jumbotron {
+	.zero-margin(70px, 30px);
+	background:@light-indigo;
+	color:floralwhite;
+}
+
