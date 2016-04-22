@@ -24,6 +24,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Keep navbar from shifting when opening modals -->
+    <style>
+        .modal-open
+        {
+            overflow-y: scroll;
+            padding-right: 0 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,11 +73,10 @@
                     </ul>
 
                  <ul class="nav navbar-nav navbar-right">
-                    <li><a>
+                    <li><a id="loginButton" role="button">
                     <span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                 </ul>
-
 
                 </div> <!-- navbar end -->
             </div>
@@ -215,7 +222,7 @@
                 </div> <!-- End restaurant logo -->
                 <div class="col-xs-12 col-sm-2"> <!-- Reserve table button -->
                     <p style="padding: 40px"></p>
-                    <a type="button" class="btn btn-warning btn-block" href="#reserveform">Reserve Table</a>
+                    <a id="reserveButton" type="button" class="btn btn-warning btn-block">Reserve Table</a>
                 </div> <!-- End reserve table button -->
             </div>
         </div>
@@ -425,8 +432,17 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     
-    <!--! Activate carousel control buttons -->
+
     <script>
+
+        //toggle reserve table modal -task 2
+        $("#reserveButton").click(function() {
+            $('#reserveModal').modal('toggle');
+        });
+            
+
+
+        // Activate carousel control buttons
         $(document).ready(function(){
             $("#mycarousel").carousel( { interval: 2000 } );
                           $("#carousel-pause").click(function(){
