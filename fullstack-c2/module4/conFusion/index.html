@@ -73,7 +73,7 @@
                     </ul>
 
                  <ul class="nav navbar-nav navbar-right">
-                    <li><a id="loginButton" role="button">
+                    <li><a id="loginButton">
                     <span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                 </ul>
@@ -439,7 +439,11 @@
         $("#reserveButton").click(function() {
             $('#reserveModal').modal('toggle');
         });
-            
+
+        //toggle login table modal -task 3
+        $("#loginButton").click(function() {
+            $('#loginModal').modal('toggle');
+        });
 
 
         // Activate carousel control buttons
