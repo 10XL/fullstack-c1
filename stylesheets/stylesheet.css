@@ -34,6 +34,24 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.3); }
 
+.btn-view {
+  display: inline-block;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #159957;
+  border-radius: 0.3rem;
+  background-color: #159957;
+  color: white;
+  height: 30px;
+}
+
+.btn-view:hover {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 64em) {
   .btn {
     padding: 0.75rem 1rem; } }
