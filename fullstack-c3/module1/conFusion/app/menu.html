@@ -53,7 +53,7 @@
 
             <div class="tab-content">
                <ul class="media-list tab-pane fade in active">
-                  <li class="media" ng-repeat="dish in menuCtrl.dishes">
+                  <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
                     <div class="media-left media-middle">
                         <a href="#">
                         <img class="media-object img-thumbnail"
@@ -83,6 +83,7 @@
         var app = angular.module('confusionApp',[]);
         app.controller('menuController', function() {
             
+            this.filtText = '';
             this.tab = 1;
 
             var dishes=[
@@ -128,6 +129,14 @@
             
             this.select = function(setTab) {
                 this.tab = setTab;
+                if (setTab === 2)
+                    this.filtText = "appetizer";
+                else if (setTab === 3)
+                    this.filtText = "mains";
+                else if (setTab === 4)
+                    this.filtText = "dessert";
+                else
+                    this.filtText = "";
             }
 
             this.isSelected = function (checkTab) {
