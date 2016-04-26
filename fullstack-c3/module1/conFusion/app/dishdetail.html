@@ -44,7 +44,19 @@
                 </div>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
-                <p>Put the comments here</p>
+              <label for="comments"><h4>Customer Comments</h4></label>
+               <ul id="comments" class="media-list">
+                <li class="media" ng-repeat="comment in dishCtrl.dish.comments">
+                    <div class="media-body">
+                      <blockquote>
+                        <p>{{comment.rating}} Stars</p>
+                        <p>{{comment.comment}}</p>
+                        <footer>{{comment.author}}, {{comment.date | date }}</footer>
+                      </blockquote>
+                    </div>
+                </li>
+            </ul>
+              </div>
             </div>
         </div>
 
