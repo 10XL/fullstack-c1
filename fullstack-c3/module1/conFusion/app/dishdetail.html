@@ -45,8 +45,10 @@
             </div>
             <div class="col-xs-9 col-xs-offset-1">
               <label for="comments"><h4>Customer Comments</h4></label>
+              <label style="padding-left: 25px; color: rgba(0,0,0,.5);" for="sort">Sort by:</label>
+              <input id="sort" type="text" ng-model="dishCtrl.dish.filtTxt">
                <ul id="comments" class="media-list">
-                <li class="media" ng-repeat="comment in dishCtrl.dish.comments">
+                <li class="media" ng-repeat="comment in dishCtrl.dish.comments | orderBy:dishCtrl.dish.filtTxt">
                     <div class="media-body">
                       <blockquote>
                         <p>{{comment.rating}} Stars</p>
@@ -69,6 +71,7 @@
         
         app.controller('dishDetailController', function() {
 
+            this.filtTxt = '';
             var dish={
                           name:'Uthapizza',
                           image: 'images/uthapizza.png',
