@@ -5,7 +5,7 @@ angular.module('confusionApp', [])
 
             $scope.tab = 1;
             $scope.filtText = '';
-            var dishes=[
+            $scope.dishes=[
                          {
                           name:'Uthapizza',
                           image: 'images/uthapizza.png',
@@ -43,7 +43,6 @@ angular.module('confusionApp', [])
                            comment: ''
                         }
                         ]; 
-             $scope.dishes = dishes;
 
              $scope.select = function(setTab) {
                 $scope.tab = setTab;
