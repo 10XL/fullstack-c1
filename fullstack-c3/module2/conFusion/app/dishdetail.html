@@ -28,14 +28,38 @@
 <body>
 
     <div class="container">
-        <div class="row row-content">
+        <div class="row row-content" ng-controller="DishDetailController">
             <div class="col-xs-12">
-                <p>Put the dish details here</p>
-                <p>You should have completed this in Assignment 1</p>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{dish.image}} alt="Uthappizza">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{dish.name}}
+                         <span class="label label-danger">{{dish.label}}</span>
+                         <span class="badge">{{dish.price | currency}}</span></h2>
+                        <p>{{dish.description}}</p>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
-                <p>Put the comments here</p>
-                <p>You should have completed this in Assignment 1</p>
+              <label for="comments"><h4>Customer Comments</h4></label>
+              <label style="padding-left: 25px; color: rgba(0,0,0,.5);" for="sort">Sort by:</label>
+              <input id="sort" type="text" ng-model="dish.sortText" placeholder="author, date, rating">
+               <ul id="comments" class="media-list">
+                <li class="media" ng-repeat="comment in dish.comments | orderBy:dish.sortText">
+                    <div class="media-body">
+                      <blockquote>
+                        <p>{{comment.rating}} Stars</p>
+                        <p>{{comment.comment}}</p>
+                        <footer>{{comment.author}}, {{comment.date | date }}</footer>
+                      </blockquote>
+                    </div>
+                </li>
+              </ul>
             </div>
             <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
                     <ul class="list-unstyled">
