@@ -90,7 +90,7 @@ angular.module('confusionApp', [])
                 
                 console.log($scope.feedback);
                 
-                if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+                if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
                 }
@@ -163,18 +163,18 @@ angular.module('confusionApp', [])
             $scope.submitComment = function () {
                 
                 //Step 2: This is how you record the date
-                $scope.newComment.date = new Date().toISOString()
+                $scope.newComment.date = new Date().toISOString();
                 
                 // Step 3: Push your comment into the dish's comment array
                 $scope.dish.comments.push(newComment);
                 
                 //Step 4: reset your form to pristine
-                $scope.commentForm.$setPristine()
+                $scope.commentForm.$setPristine();
 
                 
                 //Step 5: reset your JavaScript object that holds your comment
                 $scope.newComment = {author:"", rating:5, comment:"", date:""};
-            }
+            };
         }])
 
 ;
