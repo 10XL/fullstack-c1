@@ -2,9 +2,8 @@
 
 angular.module('confusionApp')
 
-        .factory('menuFactory', function() {
+        .service('menuFactory', function() {
 
-            var menufac = {};
 
             var dishes=[
                          {
@@ -166,14 +165,13 @@ angular.module('confusionApp')
                         }
                         ];
 
-            menufac.getDishes = function(){
+            this.getDishes = function(){
             	return dishes;
             };
-            menufac.getDish = function (index) {
+            this.getDish = function (index) {
             	return dishes[index];
             };
-            
-            return menufac;
+
 
 
 
