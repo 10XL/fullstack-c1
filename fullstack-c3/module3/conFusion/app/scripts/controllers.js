@@ -94,6 +94,24 @@ angular.module('confusionApp')
         }])
 
         // implement the IndexController and About Controller here
+        //injecting corpfactory into both since the assignment doesn't specify to add
+        //ng-controller="AboutController" to the home.html in order to display executive chef.
+        .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope,
+                menuFactory, corporateFactory) {
+
+            $scope.featuredDish = menuFactory.getDish(0);
+
+            $scope.promotion = menuFactory.getPromotion(0);
+
+            $scope.specialist = corporateFactory.getLeader(3);
+
+        }])
+
+        .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+
+            $scope.leaders = corporateFactory.getLeaders();
+
+        }])
 
 
 ;
