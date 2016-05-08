@@ -161,9 +161,13 @@ angular.module('confusionApp', [])
             $scope.newComment = newComment;
             
             $scope.submitComment = function () {
-                
+                console.log($scope.newComment);
+
                 //Step 2: This is how you record the date
                 $scope.newComment.date = new Date().toISOString();
+
+                //$scope.newComment.rating = "pies"
+                $scope.newComment.rating = parseInt($scope.newComment.rating,10);
                 
                 // Step 3: Push your comment into the dish's comment array
                 $scope.dish.comments.push(newComment);
@@ -173,7 +177,13 @@ angular.module('confusionApp', [])
 
                 
                 //Step 5: reset your JavaScript object that holds your comment
-                $scope.newComment = {author:"", rating:5, comment:"", date:""};
+                $scope.newComment = newComment = {author:"", rating:5, comment:"", date:""};
+
+                console.log("after reset newComment");
+                console.log(newComment);
+                console.log($scope.newComment)
+                console.log("$scope.dish.comments:")
+                console.log($scope.dish.comments)
             };
         }])
 
