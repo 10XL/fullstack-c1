@@ -94,12 +94,13 @@ angular.module('confusionApp')
             $scope.submitComment = function () {
                 
                 $scope.mycomment.date = new Date().toISOString();
+                $scope.mycomment.rating = parseInt($scope.mycomment.rating,10);
+
                 console.log($scope.mycomment);
                 
                 $scope.dish.comments.push($scope.mycomment);
                 
                 $scope.commentForm.$setPristine();
-                
                 $scope.mycomment = {rating:5, comment:"", author:"", date:""};
             }
         }])
