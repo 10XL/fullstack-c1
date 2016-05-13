@@ -1,5 +1,5 @@
 {
-  "name": "conFusion",
+  "name": "confusion",
   "version": "1.0.0",
   "description": "Website for an awesome restaurant",
   "main": "index.html",
@@ -27,7 +27,8 @@
     "angular": "~1.4.7",
     "angular-route": "^1.5.5",
     "angular-ui-router": "^0.2.18",
-    "angular-resource": "^1.5.5"
+    "angular-resource": "^1.5.5",
+    "angular-mocks": "^1.5.5"
   },
   "resolutions": {
     "angular": "1.5.5"
