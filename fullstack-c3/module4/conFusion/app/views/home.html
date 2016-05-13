@@ -7,7 +7,7 @@
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
                 <div ng-if="!showDish">
-                    <h3>{{message}}</h3>
+                    <h3>{{messages[0]}}</h3>
                 </div>
                 <div class="media" ng-if="showDish">
                     <div class="media-left">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-12 col-sm-9">
                 <div ng-if="!showPromotion">
-                    <h3>{{message}}</h3>
+                    <h3>{{messages[1]}}</h3>
                 </div>
                 <div class="media" ng-if="showPromotion">
                     <div class="pull-right">
@@ -59,7 +59,10 @@
                 <h3 align=center>Meet our Culinary Specialists</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-                <div class="media">
+                <div ng-if="!showSpecialist">
+                    <h3>{{messages[2]}}</h3>
+                </div>
+                <div class="media" ng-if="showSpecialist">
                     <div class="media-left">
                         <a>
                         <img class="media-object img-thumbnail" ng-src={{specialist.image}} alt="{{specialist.name}}">
