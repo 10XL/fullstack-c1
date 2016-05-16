@@ -69,8 +69,6 @@ angular.module('confusionApp')
                 }
                 else {
                     feedbackFactory.sendFeedback().save($scope.feedback)
-                    //menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish)
-
                     $scope.invalidChannelSelection = false;
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                     $scope.feedback.mychannel="";
@@ -139,7 +137,7 @@ angular.module('confusionApp')
                 }
             );
 
-            $scope.promotion = menuFactory.getPromotion(0).get()
+            $scope.promotion = menuFactory.getPromotion().get({id:0})
             .$promise.then(
                 function(response){
                     $scope.promotion = response;
@@ -150,7 +148,7 @@ angular.module('confusionApp')
                 }
             );
 
-            $scope.specialist = corporateFactory.getLeader(3).get()
+            $scope.specialist = corporateFactory.getLeader().get({id:3})
             .$promise.then(
                 function(response){
                     $scope.specialist = response;
