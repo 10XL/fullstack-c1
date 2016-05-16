@@ -14,7 +14,7 @@ angular.module('confusionApp')
             // };
             this.getPromotion = function() {
                 return $resource(baseURL + "promotions/:id");
-            }         
+            };         
         }])
 
         .factory('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
