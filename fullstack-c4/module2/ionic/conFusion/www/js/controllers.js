@@ -64,8 +64,8 @@ angular.module('conFusion.controllers', [])
 })
 
 .controller('MenuController', ['$scope', 'menuFactory', 'favoriteFactory',
-   'baseURL', '$ionicListDelegate',
-   function ($scope, menuFactory, favoriteFactory, baseURL, $ionicListDelegate) {
+ 'baseURL', '$ionicListDelegate',
+ function ($scope, menuFactory, favoriteFactory, baseURL, $ionicListDelegate) {
 
     $scope.baseURL = baseURL;
 
@@ -131,7 +131,7 @@ angular.module('conFusion.controllers', [])
 }])
 
 .controller('FeedbackController', ['$scope', 'feedbackFactory',
- function($scope,feedbackFactory) {
+   function($scope,feedbackFactory) {
 
     $scope.sendFeedback = function() {
 
@@ -152,13 +152,14 @@ angular.module('conFusion.controllers', [])
     };
 }])
 
-.controller('DishDetailController', ['$scope', '$stateParams', '$ionicPopover', 
+.controller('DishDetailController', ['$scope', '$stateParams', '$ionicPopover', '$ionicModal', 
     'menuFactory', 'favoriteFactory', 'baseURL',
-    function($scope, $stateParams, $ionicPopover, menuFactory, favoriteFactory, baseURL) {
+    function($scope, $stateParams, $ionicPopover, $ionicModal, menuFactory, favoriteFactory, baseURL) {
 
         $scope.baseURL = baseURL;
         
         $scope.dish = {};
+        $scope.mycomment = {rating:5, comment:"", author:"", date:""};
         $scope.showDish = false;
         $scope.message="Loading ...";
         
@@ -171,15 +172,20 @@ angular.module('conFusion.controllers', [])
             function(response) {
                 $scope.message = "Error: "+response.status + " " + response.statusText;
             }
-        );
+            );
 
-        // .fromTemplateUrl() method
         $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
             scope: $scope
         }).then(function(popover) {
             $scope.popover = popover;
         });
 
+        $ionicModal.fromTemplateUrl('templates/dish-comment.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.commentModal = modal;
+        });
 
         $scope.openPopover = function($event) {
             $scope.popover.show($event);
@@ -188,13 +194,32 @@ angular.module('conFusion.controllers', [])
         $scope.closePopover = function() {
             $scope.popover.hide();
         };
+
+        $scope.openModal = function() {
+            $scope.commentModal.show();
+            $scope.closePopover();
+        };
+        $scope.closeModal = function() {
+            $scope.commentModal.hide();
+        };
+
         $scope.addFavorite = function (index) {
             console.log("index is " + index);
             favoriteFactory.addToFavorites(index);
             $scope.closePopover();
         };
 
-  }])
+        
+        $scope.submitComment = function () {
+            $scope.mycomment.date = new Date().toISOString();
+            console.log($scope.mycomment);
+            $scope.dish.comments.push($scope.mycomment);
+            menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
+            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            $scope.closeModal();
+        }
+
+    }])
 
 .controller('DishCommentController', ['$scope', 'menuFactory', function($scope,menuFactory) {
 
@@ -239,7 +264,7 @@ angular.module('conFusion.controllers', [])
     }])
 
 .controller('AboutController', ['$scope', 'corporateFactory', 'baseURL',
- function($scope, corporateFactory, baseURL) {
+   function($scope, corporateFactory, baseURL) {
 
     $scope.baseURL = baseURL;
     
@@ -249,8 +274,8 @@ angular.module('conFusion.controllers', [])
 }])
 
 .controller('FavoritesController', ['$scope', 'menuFactory', 'favoriteFactory',
- 'baseURL', '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout',
- function ($scope, menuFactory, favoriteFactory, baseURL,
+   'baseURL', '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout',
+   function ($scope, menuFactory, favoriteFactory, baseURL,
     $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout) {
 
     $scope.baseURL = baseURL;
