@@ -2,7 +2,7 @@
   <ion-header-bar>
     <h1 class="title">Submit Comment on Dish</h1>
     <div class="buttons">
-      <button class="button button-stable button-clear" ng-click="closeModal()">Close</button>
+      <button class="button button-stable button-clear" ng-click="commentModal.hide()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content>
@@ -23,7 +23,7 @@
           <textarea ng-model="mycomment.comment"></textarea>
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Reserve</button>
+          <button class="button button-block button-positive" type="submit">Submit</button>
         </label>
       </div>
     </form>

@@ -191,32 +191,25 @@ angular.module('conFusion.controllers', [])
             $scope.popover.show($event);
             console.log("popover opened");
         };
-        $scope.closePopover = function() {
-            $scope.popover.hide();
-        };
 
         $scope.openModal = function() {
             $scope.commentModal.show();
-            $scope.closePopover();
-        };
-        $scope.closeModal = function() {
-            $scope.commentModal.hide();
+            $scope.popover.hide();
         };
 
         $scope.addFavorite = function (index) {
             console.log("index is " + index);
             favoriteFactory.addToFavorites(index);
-            $scope.closePopover();
+            $scope.popover.hide();
         };
 
-        
         $scope.submitComment = function () {
             $scope.mycomment.date = new Date().toISOString();
             console.log($scope.mycomment);
             $scope.dish.comments.push($scope.mycomment);
             menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
             $scope.mycomment = {rating:5, comment:"", author:"", date:""};
-            $scope.closeModal();
+            $scope.commentModal.hide();
         }
 
     }])
