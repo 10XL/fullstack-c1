@@ -153,8 +153,8 @@ angular.module('conFusion.controllers', [])
 }])
 
 .controller('DishDetailController', ['$scope', '$stateParams', '$ionicPopover', '$ionicModal', 
-    'menuFactory', 'favoriteFactory', 'baseURL',
-    function($scope, $stateParams, $ionicPopover, $ionicModal, menuFactory, favoriteFactory, baseURL) {
+     'dish', 'menuFactory', 'favoriteFactory', 'baseURL',
+    function($scope, $stateParams, $ionicPopover, $ionicModal, dish, menuFactory, favoriteFactory, baseURL) {
 
         $scope.baseURL = baseURL;
         
@@ -163,16 +163,7 @@ angular.module('conFusion.controllers', [])
         $scope.showDish = false;
         $scope.message="Loading ...";
         
-        $scope.dish = menuFactory.get({id:parseInt($stateParams.id,10)})
-        .$promise.then(
-            function(response){
-                $scope.dish = response;
-                $scope.showDish = true;
-            },
-            function(response) {
-                $scope.message = "Error: "+response.status + " " + response.statusText;
-            }
-            );
+        $scope.dish = dish;
 
         $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
             scope: $scope
@@ -277,7 +268,7 @@ angular.module('conFusion.controllers', [])
     $scope.favorites = favorites;
 
     $scope.dishes = dishes;
-    
+
     console.log($scope.dishes, $scope.favorites);
 
     $scope.toggleDelete = function () {
