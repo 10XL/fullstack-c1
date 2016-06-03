@@ -98,17 +98,17 @@ angular.module('conFusion.controllers', [])
     };
 
         $ionicPlatform.ready(function() {
-        // var options = {
-        //     quality: 50,
-        //     destinationType: Camera.DestinationType.DATA_URL,
-        //     sourceType: Camera.PictureSourceType.CAMERA,
-        //     allowEdit: true,
-        //     encodingType: Camera.EncodingType.JPEG,
-        //     targetWidth: 100,
-        //     targetHeight: 100,
-        //     popoverOptions: CameraPopoverOptions,
-        //     saveToPhotoAlbum: false
-        // };
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
          $scope.takePicture = function() {
             $cordovaCamera.getPicture(options).then(function(imageData) {
                 $scope.registration.imgSrc = "data:image/jpeg;base64," + imageData;
