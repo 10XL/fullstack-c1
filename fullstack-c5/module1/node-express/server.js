@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
 var dishRouter = require('./dishRouter');
+var promoRouter = require('./promoRouter');
 
 var hostname = 'localhost';
 var port = 3000;
@@ -12,6 +13,7 @@ var app = express();
 app.use(morgan('dev'));
 
 app.use('/dishes',dishRouter.Router);
+app.use('/promotions', promoRouter.Router);
 
 app.use(express.static(__dirname + '/public'));
 
