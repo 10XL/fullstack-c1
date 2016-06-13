@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 
 app.use('/dishes',dishRouter.Router);
 app.use('/promotions', promoRouter.Router);
-app.use('/leaders', leaderRouter.Router()); //using a function just for fun.
+app.use('/leadership', leaderRouter.Router()); //using a function just for fun.
 
 app.use(express.static(__dirname + '/public'));
 
