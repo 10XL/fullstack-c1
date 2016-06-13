@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 var dishRouter = require('./dishRouter');
 var promoRouter = require('./promoRouter');
+var leaderRouter = require('./leaderRouter');
 
 var hostname = 'localhost';
 var port = 3000;
@@ -14,6 +15,7 @@ app.use(morgan('dev'));
 
 app.use('/dishes',dishRouter.Router);
 app.use('/promotions', promoRouter.Router);
+app.use('/leaders', leaderRouter.Router()); //using a function just for fun.
 
 app.use(express.static(__dirname + '/public'));
 
