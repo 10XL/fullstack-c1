@@ -1,44 +1,46 @@
-var mongoose = require('mongoose'),
-    assert = require('assert');
+var express = require('express');
+var morgan = require('morgan');
 
-var Dishes = require('./models/dishes-1');
-// Connection URL
-var url = 'mongodb://localhost:27017/conFusion';
-mongoose.connect(url);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    // we're connected!
-    console.log("Connected correctly to server");
-    // create a new dish
-    Dishes.create({
-        name: 'Uthapizza',
-        description: 'Test'
-    }, function (err, dish) {
-        if (err) throw err;
-        console.log('Dish created!');
-        console.log(dish);
+var hostname = 'localhost';
+var port = 3000;
 
-        var id = dish._id;
+var app = express();
 
-        // get all the dishes
-        setTimeout(function () {
-            Dishes.findByIdAndUpdate(id, {
-                    $set: {
-                        description: 'Updated Test'
-                    }
-                }, {
-                    new: true
-                })
-                .exec(function (err, dish) {
-                    if (err) throw err;
-                    console.log('Updated Dish!');
-                    console.log(dish);
+app.use(morgan('dev'));
 
-                    db.collection('dishes').drop(function () {
-                        db.close();
-                    });
-                });
-        }, 3000);
-    });
+function auth (req, res, next) {
+    console.log(req.headers);
+    var authHeader = req.headers.authorization;
+    if (!authHeader) {
+        var err = new Error('You are not authenticated!');
+        err.status = 401;
+        next(err);
+        return;
+    }
+
+    var auth = new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
+    var user = auth[0];
+    var pass = auth[1];
+    if (user == 'admin' && pass == 'password') {
+        next(); // authorized
+    } else {
+        var err = new Error('You are not authenticated!');
+        err.status = 401;
+        next(err);
+    }
+}
+
+app.use(auth);
+
+app.use(express.static(__dirname + '/public'));
+app.use(function(err,req,res,next) {
+            res.writeHead(err.status || 500, {
+            'WWW-Authenticate': 'Basic',
+            'Content-Type': 'text/plain'
+        });
+        res.end(err.message);
+});
+
+app.listen(port, hostname, function(){
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
